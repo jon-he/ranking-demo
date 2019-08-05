@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import './styles.css';
+import { connect } from 'react-redux';
+
+import RankItem  from '../../Components/RankItem';
 
 class Home extends Component {
-  componentDidMount(){
-    const { fetchList } = this.props;
-    fetchList();
+  async componentDidMount(){
+    const { fetchList, randomScore } = this.props;
+    await fetchList();
+    this.timer = setInterval(randomScore, 500);
   }
 
-  render() {
-    console.log(this.props.data);
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  renderList = () => {
+    const { data } = this.props;
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        {
+          data.map((item, index) => (
+            <RankItem
+              key={item.userID}
+              item={item}
+              index={index}
+            />
+          ))
+        }
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <div>
+        {this.renderList()}
       </div>
     );
   }
@@ -35,6 +52,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchList: () => {
       dispatch({ type: 'FETCH_REQUESTED' })
+    },
+    randomScore: () => {
+      dispatch({ type: 'RANDOM_SCORE' })
     }
   }
 }
