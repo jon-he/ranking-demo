@@ -11,7 +11,7 @@ const randomScore = state => {
   if (dataLength) {
     const newData = [...state.data];
     const randomItem = Math.floor(Math.random() * dataLength);
-    const randomValue = Math.floor(Math.random() * 1000);
+    const randomValue = Math.floor(Math.random() * 2000);
     newData[randomItem].score += randomValue;
     newData.sort((a, b) => b.score - a.score);
     return {

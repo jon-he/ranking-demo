@@ -1,44 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import HomeComponent  from './Home.component';
 
-import RankItem  from '../../Components/RankItem';
-
-class Home extends Component {
-  async componentDidMount(){
-    const { fetchList, randomScore } = this.props;
-    await fetchList();
-    this.timer = setInterval(randomScore, 500);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
-
-  renderList = () => {
-    const { data } = this.props;
-    return (
-      <div>
-        {
-          data.map((item, index) => (
-            <RankItem
-              key={item.userID}
-              item={item}
-              index={index}
-            />
-          ))
-        }
-      </div>
-    );
-  };
-
-  render() {
-    return (
-      <div>
-        {this.renderList()}
-      </div>
-    );
-  }
-}
+const HomeContainer = props => <HomeComponent {...props} />;
 
 const mapStateToProps = (state) => {
   return ({
@@ -59,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

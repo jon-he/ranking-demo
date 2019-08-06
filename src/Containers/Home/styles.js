@@ -1,24 +1,25 @@
-.App {
-  text-align: center;
-}
+import styled from 'styled-components';
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+const boxItemHeight = 45;
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
+const ListBox = styled.div`
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
+  width: 320px;
+`;
 
-.App-intro {
-  font-size: large;
-}
+const BoxItem = styled.div`
+  position: absolute;
+  top: ${props => props.index * boxItemHeight}px;
+  left: 0;
+  transition: top 0.2s linear 0.1s;
+  width: 100%;
+  height: ${boxItemHeight}px;
+  background-color: #fff;
+`;
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+export {
+  ListBox,
+  BoxItem
+};
