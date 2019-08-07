@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RankItem  from '../../Components/RankItem/RankItem.component';
-import { ListBox, BoxItem } from './styles';
+import { ContainerBox, ListBox, BoxItem } from './styles';
 
 const intervalDefault = 500;
 
@@ -36,9 +36,25 @@ class HomeComponent extends Component {
     );
   };
 
+  renderError = () => {
+    return (
+      this.props.error ? <div>Error</div> : null
+    );
+  };
+
+  renderLoading = () => {
+    return (
+      this.props.isFetching ? <div>Loading...</div> : null
+    );
+  };
+
   render() {
     return (
-      this.renderList()
+      <ContainerBox>
+        {this.renderList()}
+        {this.renderLoading()}
+        {this.renderError()}
+      </ContainerBox>
     );
   }
 }

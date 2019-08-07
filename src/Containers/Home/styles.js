@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 const boxItemHeight = 45;
 
+const ContainerBox = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const ListBox = styled.div`
   position: relative;
   margin: 0 auto;
@@ -20,6 +27,7 @@ const BoxItem = styled.div`
 `;
 
 export {
+  ContainerBox,
   ListBox,
   BoxItem
 };
