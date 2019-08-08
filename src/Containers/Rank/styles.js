@@ -11,10 +11,11 @@ const ContainerBox = styled.div`
 
 const ListBox = styled.div`
   position: relative;
-  margin: 20px auto;
+  margin: 5% auto;
   width: 280px;
-  @media screen and (min-width: 350px) {
-    width: 70%;
+  @media screen and (min-width: 320px) {
+    margin: 20px auto;
+    width: 90%;
     max-width: 480px;
   }
 `;
@@ -23,11 +24,9 @@ const BoxItem = styled.div`
   position: absolute;
   top: ${props => props.sort * boxItemHeight}px;
   left: 0;
+  right: 0;
   transition: top 0.3s ease 0s;
   width: 100%;
-  background-color: #d3d7d4;
-  border-radius: 5px;
-  padding: 5px 14px;
 `;
 
 export { ContainerBox, ListBox, BoxItem };
