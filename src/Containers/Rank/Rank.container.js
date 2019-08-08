@@ -21,18 +21,19 @@ class RankContainer extends Component {
     clearInterval(this.timer);
   }
 
-  getNewData = (data) => {
+  setNewData = data => {
     const { dataList } = this.state;
-    data.forEach((item, index) => {
-      dataList.forEach(listItem => {
+    data.map(item => {
+      dataList.map(listItem => {
         if (listItem.userID === item.userID) {
-          listItem.sort = item.sort
+          listItem.sort = item.sort;
         }
-      })
+        return false;
+      });
+      return false;
     });
-    const newData = dataList;
     this.setState({
-      dataList: newData
+      dataList: [...dataList]
     });
   };
 
@@ -46,10 +47,8 @@ class RankContainer extends Component {
       newData[randomItem].preScore = newData[randomItem].score;
       newData[randomItem].score += randomValue;
       newData.sort((a, b) => b.score - a.score);
-      newData.forEach((item, index) => {
-        item.sort = index;
-      });
-      this.getNewData(newData);
+      newData.map((item, index) => (item.sort = index));
+      this.setNewData(newData);
     }
   };
 
@@ -58,7 +57,7 @@ class RankContainer extends Component {
     return (
       <ListBox>
         {
-          dataList.map((item, index) => (
+          dataList.map(item => (
             <BoxItem
               key={item.userID}
               sort={item.sort}
