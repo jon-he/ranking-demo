@@ -16,7 +16,7 @@ class ListItemComponent extends Component {
     if (newScore > score) {
       const preStep = Math.floor((newScore - preScore) / 10);
       timer = requestAnimationFrame(() => {
-        this.setState({ score: score + preStep });
+        this.setState(prevStates => ({ score: prevStates.score + preStep }));
       });
     } else if (newScore < score) {
       this.setState({ score: newScore });

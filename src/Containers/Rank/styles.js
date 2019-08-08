@@ -15,6 +15,7 @@ const ListBox = styled.div`
   width: 280px;
   @media screen and (min-width: 350px) {
     width: 70%;
+    max-width: 480px;
   }
 `;
 
@@ -26,7 +27,7 @@ const BoxItem = styled.div`
   width: 100%;
   background-color: #d3d7d4;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 14px;
 `;
 
 const RankItemBox = styled.div`
@@ -45,6 +46,7 @@ const RankItemBox = styled.div`
   .rank {
     width: 15px;
     margin-right: 10px;
+    text-align: center;
   }
   
   img {
