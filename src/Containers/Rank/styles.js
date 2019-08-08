@@ -25,7 +25,7 @@ const BoxItem = styled.div`
   top: ${props => props.sort * boxItemHeight}px;
   left: 0;
   right: 0;
-  transition: top 0.3s ease 0s;
+  transition: top 0.3s ease 0.2s;
   width: 100%;
 `;
 
