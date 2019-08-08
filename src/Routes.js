@@ -7,7 +7,7 @@ const BasicRoute = () => (
   <HashRouter>
     <Switch>
       <Route exact path="/" component={RankContainer}/>
-      <Route exact path="/rank" component={RankContainer}/>
+      <Route exact path="/rank" component={HomeContainer}/>
     </Switch>
   </HashRouter>
 );

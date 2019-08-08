@@ -18,6 +18,9 @@ class ListItemComponent extends Component {
       timer = requestAnimationFrame(() => {
         this.setState({ score: score + preStep });
       });
+    } else if (newScore < score) {
+      this.setState({ score: newScore });
+      cancelAnimationFrame(timer);
     } else {
       cancelAnimationFrame(timer);
     }
@@ -29,7 +32,7 @@ class ListItemComponent extends Component {
     return (
       <RankItemBox>
         <div className="boxLeft">
-          <div className="rank">{item.sort + 1}</div>
+          <div className="rank">{item.sort !== undefined && (item.sort + 1)}</div>
           <div><img src={item.picture} alt={item.displayName} /></div>
           <div>{item.displayName}</div>
         </div>
