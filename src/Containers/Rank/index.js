@@ -24,17 +24,20 @@ class RankContainer extends Component {
 
   setNewData = data => {
     const { dataList } = this.state;
-    data.map(item => {
-      dataList.map(listItem => {
+    const newData = dataList.map(item => {
+      data.map(listItem => {
         if (listItem.userID === item.userID) {
-          listItem.sort = item.sort;
+          return {
+            ...listItem,
+            sort: listItem.sort
+          }
         }
-        return false;
+        return {...listItem}
       });
-      return false;
+      return {...item};
     });
     this.setState({
-      dataList: [...dataList]
+      dataList: newData
     });
   };
 
