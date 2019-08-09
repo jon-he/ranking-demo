@@ -44,20 +44,27 @@ class RankContainer extends Component {
     const { dataList } = this.state;
     const dataLength = dataList && dataList.length ? dataList.length : 0;
     if (dataLength) {
-      const newData = [...dataList];
       const randomItem = Math.floor(Math.random() * dataLength);
       const randomValue = Math.floor(Math.random() * 10000);
-      newData[randomItem].preScore = newData[randomItem].score;
-      newData[randomItem].score += randomValue;
-      const data = newData
+      const newData = dataList
+        .map((item, index) => {
+          if (index === randomItem) {
+            return {
+              ...item,
+              preScore: item.score,
+              score: item.score + randomValue
+            };
+          }
+          return item;
+        })
         .sort((a, b) => b.score - a.score)
         .map((item, index) => {
           return {
             ...item,
             sort: index
-          }
+          };
         });
-      this.setNewData(data);
+      this.setNewData(newData);
     }
   };
 
